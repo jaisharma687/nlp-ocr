@@ -91,8 +91,8 @@ def main():
             except Exception as e:
                 print(f"Skipping {fp}: {e}")
 
-    print(f"✅ Created {total_pairs} Q&A pairs from {len(all_json_files)} files")
-    print(f"💾 Saved to {output_path}")
+    print(f"Created {total_pairs} Q&A pairs from {len(all_json_files)} files")
+    print(f"Saved to {output_path}")
 
 
 if __name__ == "__main__":

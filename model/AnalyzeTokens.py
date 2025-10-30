@@ -19,11 +19,11 @@ def count_tokens(jsonl_path="data/qa_data.jsonl"):
         token_counts.append(len(tokens))
         total_tokens += len(tokens)
 
-    print(f"📊 Total samples: {len(samples)}")
-    print(f"🧩 Total tokens: {total_tokens}")
-    print(f"📏 Average tokens per sample: {total_tokens / len(samples):.2f}")
-    print(f"⚙️ Vocabulary size: {tokenizer.vocab_size}")
-    print(f"🔢 Min length: {min(token_counts)}, Max length: {max(token_counts)}")
+    print(f"Total samples: {len(samples)}")
+    print(f"Total tokens: {total_tokens}")
+    print(f"Average tokens per sample: {total_tokens / len(samples):.2f}")
+    print(f"Vocabulary size: {tokenizer.vocab_size}")
+    print(f"Min length: {min(token_counts)}, Max length: {max(token_counts)}")
 
 if __name__ == "__main__":
     count_tokens()

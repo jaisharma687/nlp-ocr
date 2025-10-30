@@ -55,24 +55,24 @@ def process_all_images():
             os.makedirs(image_process_folder, exist_ok=True)
             
             # Extract table from image
-            print(f"  📄 Extracting table...")
+            print(f"  Extracting table...")
             table_extractor = te.TableExtractor(image_path)
             perspective_corrected_image = table_extractor.execute()
             
             # Detect grid structure
-            print(f"  🔍 Detecting grid structure...")
+            print(f"  Detecting grid structure...")
             grid_detector = tgd.TableGridDetector(perspective_corrected_image)
             grid_result = grid_detector.execute()
             
             # Print grid information
-            print(f"  📏 Detected {len(grid_result['vertical_lines'])} vertical lines")
-            print(f"  📏 Detected {len(grid_result['horizontal_lines'])} horizontal lines")
-            print(f"  📊 Found {len(grid_result['cells'])} rows")
+            print(f"  Detected {len(grid_result['vertical_lines'])} vertical lines")
+            print(f"  Detected {len(grid_result['horizontal_lines'])} horizontal lines")
+            print(f"  Found {len(grid_result['cells'])} rows")
             if grid_result['cells']:
-                print(f"  📊 Found {len(grid_result['cells'][0])} columns")
-            
+                print(f"  Found {len(grid_result['cells'][0])} columns")
+
             # Extract cell contents using grid-based OCR
-            print(f"  📝 Extracting cell contents...")
+            print(f"  Extracting cell contents...")
             ocr_extractor = gboe.GridBasedOcrExtractor(
                 perspective_corrected_image, 
                 grid_result,
@@ -89,7 +89,7 @@ def process_all_images():
                 shutil.rmtree("temp_cells")
                 os.makedirs("temp_cells", exist_ok=True)
             
-            print(f"  ✅ Successfully processed {image_file}")
+            print(f"  Successfully processed {image_file}")
             successful += 1
             
         except Exception as e:
@@ -108,11 +108,11 @@ def process_all_images():
     print(f"\n{'='*80}")
     print(f"BATCH PROCESSING COMPLETE")
     print(f"{'='*80}")
-    print(f"✅ Successful: {successful}/{total_images}")
-    print(f"❌ Failed: {failed}/{total_images}")
-    print(f"\n📁 CSV files saved to: {output_csv_folder}/")
-    print(f"📁 JSON files saved to: {output_json_folder}/")
-    print(f"📁 Process images saved to: {output_images_folder}/")
+    print(f"Successful: {successful}/{total_images}")
+    print(f"Failed: {failed}/{total_images}")
+    print(f"\nCSV files saved to: {output_csv_folder}/")
+    print(f"JSON files saved to: {output_json_folder}/")
+    print(f"Process images saved to: {output_images_folder}/")
     print(f"{'='*80}\n")
 
 def move_process_images(base_name, target_folder):

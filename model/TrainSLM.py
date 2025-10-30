@@ -27,7 +27,7 @@ class QADataset(Dataset):
     def __len__(self): return len(self.data)
     def __getitem__(self, idx): return self.data[idx]
 
-# ✅ NEW: Collate function for dynamic padding
+# NEW: Collate function for dynamic padding
 def pad_collate(batch):
     max_len = max([len(x) for x in batch])
     # PAD id will be filled later by caller to match tokenizer
@@ -79,7 +79,7 @@ def train_model(jsonl_path="data/qa_data.jsonl", epochs=10):
         },
         "model/saved_model.pt"
     )
-    print("✅ Model saved to model/saved_model.pt")
+    print("Model saved to model/saved_model.pt")
 
 if __name__ == "__main__":
     train_model()

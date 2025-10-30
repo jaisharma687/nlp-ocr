@@ -128,7 +128,7 @@ class GridBasedOcrExtractor:
             for row in self.table_data:
                 csv_writer.writerow(row)
         
-        print(f"  💾 CSV saved: {self.csv_output_path}")
+        print(f"  CSV saved: {self.csv_output_path}")
 
     def generate_json_file(self):
         """Generate JSON file from extracted table data"""
@@ -154,8 +154,8 @@ class GridBasedOcrExtractor:
         with open(self.json_output_path, 'w', encoding='utf-8') as jsonfile:
             json.dump(json_data, jsonfile, indent=2, ensure_ascii=False)
         
-        print(f"  💾 JSON saved: {self.json_output_path}")
-        print(f"  📊 Rows: {len(self.table_data)}, Columns: {len(self.table_data[0]) if self.table_data else 0}")
+        print(f"  JSON saved: {self.json_output_path}")
+        print(f"  Rows: {len(self.table_data)}, Columns: {len(self.table_data[0]) if self.table_data else 0}")
 
     def store_cell_image(self, file_name, image):
         """Store individual cell images for debugging"""
