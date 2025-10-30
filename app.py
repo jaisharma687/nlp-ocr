@@ -3,14 +3,13 @@ import streamlit as st
 from inference import extract_calendar_json, build_context_lines, load_model, answer_question_from_context
 
 
-st.set_page_config(page_title="Academic Calendar QA (SLM)", page_icon="📅", layout="centered")
-st.title("📅 Academic Calendar Interpretation (Compact SLM)")
-st.caption("Answers are generated from the uploaded file only. No external LLMs used.")
+st.set_page_config(page_title="Academic Calendar Analysis", page_icon="📅", layout="centered")
+st.title("Academic Calendar Interpretation")
 
 @st.cache_resource(show_spinner=False)
 def get_model():
     return load_model("model/saved_model.pt")
-
+    
 model, tokenizer = get_model()
 
 uploaded = st.file_uploader("Upload a calendar PDF or image", type=["pdf", "png", "jpg", "jpeg", "bmp", "tiff"]) 
@@ -22,7 +21,7 @@ if uploaded:
     with open(file_path, "wb") as f:
         f.write(uploaded.read())
 
-    with st.spinner("Extracting table and OCR..."):
+    with st.spinner("Analyzing the uploaded file 😅😅"):
         table_data = extract_calendar_json(file_path)
         context_lines = build_context_lines(table_data)
 

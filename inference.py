@@ -3,12 +3,12 @@ import json
 import torch
 from typing import List, Dict
 
-from model.slm_model import MiniTransformer
-from model.tokenizer import SimpleTokenizer
+from model.Model import MiniTransformer
+from model.Tokenizer import SimpleTokenizer
 
-import TableExtractor as te
-import TableGridDetector as tgd
-import GridBasedOcrExtractor as gboe
+import modules.TableExtractor as te
+import modules.TableGridDetector as tgd
+import modules.GridBasedOcrExtractor as gboe
 from pdf2image import convert_from_path
 from PIL import Image
 import re
@@ -63,7 +63,7 @@ def extract_calendar_json(input_path: str) -> Dict:
     )
     table_data = ocr_extractor.execute()
 
-    # Return table_data (already a dict) for immediate use
+    # Return table_data (already a dict/list) for immediate use
     return table_data
 
 
